@@ -3,6 +3,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import egovframework.example.sample.service.EgovSampleService;
@@ -16,11 +17,18 @@ public class HelloController {
 	private HelloService helloService;
 	
 	@RequestMapping(value = "/hello.do")
-	public String hello() throws Exception {
+	public String hello(ModelMap model) throws Exception {
 		System.out.println("안녕");
 		List<?> result = helloService.selectData();
+		
+		for (Object item : result) {
+			System.out.println(item);
+		}
+		
+		model.addAttribute("regionList", result);
+		
+		
 
-		System.out.println("@@@" + result.get(0));
 		return "hello/hello";
 	}
 	

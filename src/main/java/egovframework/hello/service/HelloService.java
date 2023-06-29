@@ -2,7 +2,8 @@ package egovframework.hello.service;
 
 import java.util.List;
 
-import egovframework.example.sample.service.SampleDefaultVO;
+import org.springframework.ui.ModelMap;
+
 
 public interface HelloService {
 	List<?> selectData() throws Exception;

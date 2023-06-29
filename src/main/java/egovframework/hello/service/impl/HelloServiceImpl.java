@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import egovframework.hello.service.HelloService;
 import egovframework.hello.service.HelloVO;
@@ -20,6 +21,9 @@ public class HelloServiceImpl extends EgovAbstractServiceImpl implements HelloSe
 		// TODO Auto-generated method stub
 		List<?> result = helloDAO.selectData();
 		
+//		model.addAllAttributes("regionList", result);
+		
+		
 		return result;
 	}
 	
@@ -30,7 +34,12 @@ public class HelloServiceImpl extends EgovAbstractServiceImpl implements HelloSe
 	
 		String result = helloDAO.insertData(vo);
 		
-		System.out.println("처리결과: " + result);
+		if( result == null) {
+			System.out.println("저장완료");
+		}
+		else {			
+			System.out.println("저장실패: " + result);
+		}
 		
 		return null;
 	}

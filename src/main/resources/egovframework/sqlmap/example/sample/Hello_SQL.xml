@@ -7,12 +7,9 @@
 	<typeAlias  alias="helloVO" type="egovframework.example.sample.service.HelloVO"/>
 	
 	<insert id="helloDAO.insertData" >
-		BEGIN
 			INSERT INTO HR.REGIONS
 			(REGION_ID, REGION_NAME)
-			VALUES(#regionId#, #regionName#);
-			 COMMIT;
-			 END;
+			VALUES(#regionId#, #regionName#)
 	</insert>
 	
 	<select id="helloDAO.selectData" resultClass="egovMap">
