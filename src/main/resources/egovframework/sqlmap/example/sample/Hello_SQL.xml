@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="HelloSpace">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="helloVO" type="egovframework.example.sample.service.HelloVO"/>
+	
+	<insert id="helloDAO.insertData" >
+		BEGIN
+			INSERT INTO HR.REGIONS
+			(REGION_ID, REGION_NAME)
+			VALUES(#regionId#, #regionName#);
+			 COMMIT;
+			 END;
+	</insert>
+	
+	<select id="helloDAO.selectData" resultClass="egovMap">
+		SELECT REGION_ID, REGION_NAME
+		FROM HR.REGIONS
+	</select>
+	
+</sqlMap>
