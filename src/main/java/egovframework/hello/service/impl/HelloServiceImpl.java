@@ -20,10 +20,7 @@ public class HelloServiceImpl extends EgovAbstractServiceImpl implements HelloSe
 	public List<?> selectData() throws Exception {
 		// TODO Auto-generated method stub
 		List<?> result = helloDAO.selectData();
-		
-//		model.addAllAttributes("regionList", result);
-		
-		
+
 		return result;
 	}
 	
@@ -42,6 +39,28 @@ public class HelloServiceImpl extends EgovAbstractServiceImpl implements HelloSe
 		}
 		
 		return null;
+	}
+
+	@Override
+	public HelloVO selectDetail(String id) throws Exception {
+		// TODO Auto-generated method stub
+		HelloVO result = helloDAO.selectDetail(id);		
+		return result;
+	}
+
+	@Override
+	public int updateData(HelloVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		int result = helloDAO.updateData(vo);
+
+		return result;
+	}
+
+	@Override
+	public int deleteData(String id) throws Exception {
+		// TODO Auto-generated method stub
+		int result = helloDAO.deleteData(id);
+		return result;
 	}
 	
 }

@@ -16,10 +16,19 @@
     </form>
 
     	<c:forEach var="result" items="${regionList}" varStatus="status">
-    		<li>${status.index}| ${result.regionId} | <c:out value="${result.regionId}"/> | <c:out value="${result.regionName}"/></li>
+    		<li>
+    			<a href="helloDetail.do?id=${result.regionId}">
+	    			${status.index}| ${result.regionId} | <c:out value="${result.regionId}"/> | <c:out value="${result.regionName}"/>
+    			</a>
+    			<button onclick="deleteItem('${result.regionId}')">삭제</button>
+    		</li>
     	</c:forEach>
     	
 
-    
+    <script>
+    	function deleteItem(id) {
+    		location.href = "helloDelete.do?id=" + id;
+    	}
+    </script>
 </body>
 </html>

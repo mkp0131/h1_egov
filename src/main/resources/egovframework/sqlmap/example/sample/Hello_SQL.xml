@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="HelloSpace">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="helloVO" type="egovframework.example.sample.service.HelloVO"/>
+	<typeAlias  alias="helloVO" type="egovframework.hello.service.HelloVO"/>
 	
-	<insert id="helloDAO.insertData" >
+	 
+	<resultMap id="detailData" class="egovframework.hello.service.HelloVO">
+		<result property="regionId" column="REGION_ID"/>
+		<result property="regionName" column="REGION_NAME"/>
+	</resultMap>
+	 
+	 
+	<insert id="helloDAO.insertData"  >
 			INSERT INTO HR.REGIONS
 			(REGION_ID, REGION_NAME)
 			VALUES(#regionId#, #regionName#)
 	</insert>
 	
-	<select id="helloDAO.selectData" resultClass="egovMap">
+	<select id="helloDAO.selectData"  resultClass="egovMap">
 		SELECT REGION_ID, REGION_NAME
 		FROM HR.REGIONS
 	</select>
+	
+	<select id="helloDAO.selectDetail"  resultMap="detailData" >
+		SELECT REGION_ID, REGION_NAME
+		FROM HR.REGIONS
+		WHERE REGION_ID = #id#
+	</select>
+	
+	<update id="helloDAO.updateData"  >
+		UPDATE HR.REGIONS
+		SET REGION_NAME = #regionName#
+		WHERE REGION_ID = #regionId#
+	</update>
+	
+	<delete id="helloDAO.deleteData"  >
+		DELETE FROM HR.REGIONS
+		WHERE REGION_ID = #regionId#
+	</delete>
 	
 </sqlMap>

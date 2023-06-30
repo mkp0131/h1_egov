@@ -1,13 +1,14 @@
 package egovframework.hello.service;
 
+
 public class HelloVO {
-	private String regionId;
+	private int regionId;
 	private String regionName;
 	
-	public String getRegionId() {
+	public int getRegionId() {
 		return regionId;
 	}
-	public void setRegionId(String regionId) {
+	public void setRegionId(int regionId) {
 		this.regionId = regionId;
 	}
 	public String getRegionName() {

@@ -15,7 +15,23 @@ public class HelloDAO extends EgovAbstractDAO {
 	
 	public String insertData(HelloVO vo) throws Exception {
 		System.out.println("실행됨 DAO: " + vo.getRegionId());
-		return(String) insert("helloDAO.insertData", vo);
+		return (String) insert("helloDAO.insertData", vo);
 	}
+	
+	public HelloVO selectDetail(String id) throws Exception  {
+		return (HelloVO) select("helloDAO.selectDetail", id);
+	}
+	
+	
+	public int updateData(HelloVO vo) throws Exception  {
+		return update("helloDAO.updateData", vo);
+	}
+
+	public int deleteData(String id) {
+		// TODO Auto-generated method stub
+		
+		return (int) delete("helloDAO.deleteData", id);
+	}
+	
 	
 }
